@@ -6,7 +6,6 @@ class Element(object):
     def __init__(self, id: int, nodes: [Node]):
         self.__id = id
         self.__nodes = nodes
-        self.__surfaces = []
         self.__amount_of_surface_with_bc = 0
 
         # Wyznaczamy krawędzie elementu
@@ -27,3 +26,8 @@ class Element(object):
     @property
     def nodes(self):
         return self.__nodes
+
+    def coordinates(self):
+        x = [node.x for node in self.__nodes]
+        y = [node.y for node in self.__nodes]
+        return x, y
