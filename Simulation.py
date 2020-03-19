@@ -1,11 +1,19 @@
-from global_system.Grid import Grid
-from local_system.UniversalElement import UniversalElement
+import numpy as np
 
-first_grid = Grid()
-print("The grid's created.")
+from global_system.Calculation import solve, set_nodes_temperature
+from global_system import GlobalData as GlDt
 
-first_uni_element = UniversalElement()
-print("Universal element's created")
+for time_step in range(GlDt.time_step_number):
 
-first_uni_element.create_jacobian_matrix(first_grid.elements[0], 2)
-print("Jacobian matrix's created")
+    # Obliczamy składowe konieczne do rozwiązania układu
+    # równań w celu wyznaczenia temperatury w węzłach
+    h_global, p_global = solve()
+
+    # Rozwiązujemy układ równań
+    nodes_temp = np.dot(np.linalg.inv(h_global), p_global)
+
+    # Ustawiamy nową temperaturę w węzłach
+    set_nodes_temperature(nodes_temp)
+
+    # Wyświetlamy temperaturę min i max
+    print("TIME STEP: {}\t\tMIN: {:.3f}\t\tMAX: {:.3f}".format(time_step, np.amin(nodes_temp), np.amax(nodes_temp)))

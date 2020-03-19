@@ -9,7 +9,7 @@ class Grid(object):
         self.__elements = []
 
         # Tworzenie węzłów
-        node_id = 1
+        node_id = 0
         for i in range(GlDt.nodes_number_for_width):
             for j in range(GlDt.nodes_number_for_height):
                 self.__nodes.append(Node(node_id,
@@ -18,7 +18,7 @@ class Grid(object):
                 node_id += 1
 
         # Tworzenie elementów
-        element_id = 1
+        element_id = 0
         for i in range(GlDt.nodes_number_for_width - 1):
             for j in range(GlDt.nodes_number_for_height - 1):
                 node_id = GlDt.nodes_number_for_height * i + j
@@ -32,3 +32,7 @@ class Grid(object):
     @property
     def elements(self):
         return self.__elements
+
+    @property
+    def nodes(self):
+        return self.__nodes

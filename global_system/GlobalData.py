@@ -15,3 +15,4 @@ nodes_number = nodes_number_for_height * nodes_number_for_width
 elements_number = (nodes_number_for_height - 1) * (nodes_number_for_width - 1)
 distance_between_nodes_for_height = height / (nodes_number_for_height - 1)
 distance_between_nodes_for_width = width / (nodes_number_for_width - 1)
+time_step_number = simulation_time // simulation_step_time

@@ -18,6 +18,10 @@ class Surface(object):
         return self.__nodes
 
     @property
+    def id(self):
+        return self.__id
+
+    @property
     def boundary_condition(self):
         return self.__boundary_condition
 
